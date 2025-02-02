@@ -1,6 +1,6 @@
 extends Node
 
-const BASE_PATH = "user://" # or "res://"
+const BASE_PATH = "res://"
 const CONFIG_FILE_PATH = BASE_PATH + "config.tres"
 const CHAT_SAVE_PATH = BASE_PATH + "Chats/"
 const CHAT_FILE_SAVE_PATH = CHAT_SAVE_PATH + "%s.tres"
@@ -13,7 +13,6 @@ func _ready():
 		save_config()
 	load_config()
 	IP.resolve_hostname(create_domain(), IP.TYPE_IPV4)
-	print(config.language, ' -> ', config.language_map.get(config.language))
 	TranslationServer.set_locale(config.language_map.get(config.language))
 
 func create_domain()->String:
