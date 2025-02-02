@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw5tdmq6am5dp"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_rifrx"]
+[ext_resource type="PackedScene" uid="uid://df66rnwo4w4dv" path="res://scenes/settings_dialog/settings_dialog.tscn" id="2_qhp2b"]
+
+[node name="MainMenu" type="VBoxContainer" node_paths=PackedStringArray("continue_chat", "new_chat", "about", "settings", "quit", "settings_dialog", "option_button", "load_chat_dialog")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -85.5
+offset_right = 70.0
+offset_bottom = 85.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rifrx")
+continue_chat = NodePath("ContinueChat")
+new_chat = NodePath("NewChat")
+about = NodePath("About")
+settings = NodePath("Settings")
+quit = NodePath("Quit")
+settings_dialog = NodePath("SettingsDialog")
+option_button = NodePath("LoadChatDialog/VBoxContainer/OptionButton")
+load_chat_dialog = NodePath("LoadChatDialog")
+
+[node name="ContinueChat" type="Button" parent="."]
+layout_mode = 2
+text = "CONTINUE_CHAT"
+
+[node name="NewChat" type="Button" parent="."]
+layout_mode = 2
+text = "NEW_CHAT"
+
+[node name="About" type="Button" parent="."]
+layout_mode = 2
+text = "ABOUT"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+text = "QUIT"
+
+[node name="SettingsDialog" parent="." instance=ExtResource("2_qhp2b")]
+visible = false
+
+[node name="LoadChatDialog" type="ConfirmationDialog" parent="."]
+title = "SELECT CHAT"
+initial_position = 2
+size = Vector2i(500, 80)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadChatDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 492.0
+offset_bottom = 31.0
+
+[node name="OptionButton" type="OptionButton" parent="LoadChatDialog/VBoxContainer"]
+layout_mode = 2

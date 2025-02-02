@@ -1,0 +1,87 @@
+[gd_scene load_steps=2 format=3 uid="uid://df66rnwo4w4dv"]
+
+[ext_resource type="Script" path="res://scenes/settings_dialog/settings_dialog.gd" id="1_ek2bn"]
+
+[node name="SettingsDialog" type="AcceptDialog" node_paths=PackedStringArray("option_button", "ip", "port", "default_model", "test", "test_result", "load_models", "current_default_model")]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(300, 298)
+visible = true
+script = ExtResource("1_ek2bn")
+option_button = NodePath("VBoxContainer/HBoxContainer/Protocol")
+ip = NodePath("VBoxContainer/HBoxContainer2/Ip")
+port = NodePath("VBoxContainer/HBoxContainer3/Port")
+default_model = NodePath("VBoxContainer/DefaultModel")
+test = NodePath("VBoxContainer/Test")
+test_result = NodePath("VBoxContainer/TestResult")
+load_models = NodePath("VBoxContainer/LoadModels")
+current_default_model = NodePath("VBoxContainer/CurrentDefaultModel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 249.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PROTOCOL"
+
+[node name="Protocol" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP"
+
+[node name="Ip" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "127.0.0.1"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PORT"
+
+[node name="Port" type="LineEdit" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "11434"
+
+[node name="Test" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TEST CONNECTION"
+
+[node name="TestResult" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "OLLAMA VERSION"
+horizontal_alignment = 1
+
+[node name="LoadModels" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "LOAD MODELS"
+
+[node name="CurrentDefaultModel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "DEFAULT_MODEL"
+horizontal_alignment = 1
+
+[node name="DefaultModel" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+disabled = true

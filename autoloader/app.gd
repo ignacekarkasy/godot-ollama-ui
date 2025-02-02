@@ -1,0 +1,53 @@
+extends Node
+
+const CONFIG_FILE_PATH = "user://config.tres"
+const CHAT_SAVE_PATH = "user://Chats/"
+const CHAT_FILE_SAVE_PATH = CHAT_SAVE_PATH + "%s.tres"
+var config: Config
+
+func _ready():
+	DirAccess.make_dir_absolute(CHAT_SAVE_PATH)
+	if not config_exists():
+		config = Config.new()
+		save_config()
+	load_config()
+
+func get_config_protocol():
+	return config.host_protocol
+
+func change_default_model(new_model_name: String)->void:
+	config.host_model = new_model_name
+	save_config()
+
+func change_host_ip(new_ip: String)->void:
+	config.host_ip = new_ip
+	save_config()
+
+func change_host_port(new_port: String)->void:
+	config.host_port = new_port
+	save_config()
+
+func change_host_protocol(new_protocol: Config.Protocol)->void:
+	config.host_protocol = new_protocol
+	save_config()
+
+func get_host_protocol():
+	return config.protocol_map.get(config.host_protocol)
+
+func get_config_ip():
+	return config.host_ip
+
+func get_config_port():
+	return config.host_port
+
+func get_config_host_model():
+	return config.host_model
+	
+func config_exists():
+	return FileAccess.file_exists(CONFIG_FILE_PATH)
+
+func save_config():
+	ResourceSaver.save(config, CONFIG_FILE_PATH)
+
+func load_config():
+	config = ResourceLoader.load(CONFIG_FILE_PATH, "Config", ResourceLoader.CACHE_MODE_IGNORE)

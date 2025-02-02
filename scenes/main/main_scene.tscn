@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://76ybqm2h2fgd"]
+
+[ext_resource type="Script" path="res://scenes/main/main_scene.gd" id="1_8wfvu"]
+[ext_resource type="PackedScene" uid="uid://vmv6tejymqfp" path="res://scenes/chat_container/chat_container.tscn" id="3_7th5b"]
+[ext_resource type="PackedScene" uid="uid://dw5tdmq6am5dp" path="res://scenes/main_menu/main_menu.tscn" id="4_i6kh4"]
+
+[node name="Chat" type="Control" node_paths=PackedStringArray("content")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8wfvu")
+main_menu_scene = ExtResource("4_i6kh4")
+chat_container_scene = ExtResource("3_7th5b")
+content = NodePath("Content")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

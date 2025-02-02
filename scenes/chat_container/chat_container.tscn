@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://vmv6tejymqfp"]
+
+[ext_resource type="Script" path="res://scenes/chat_container/chat_container.gd" id="1_6sfsi"]
+[ext_resource type="StyleBox" uid="uid://dvu8yxw5d2qp5" path="res://ai_response_background.tres" id="1_0476t"]
+[ext_resource type="StyleBox" uid="uid://t3omjbtafy1o" path="res://human_response_background.tres" id="3_n21nc"]
+
+[node name="ChatContainer" type="VSplitContainer" node_paths=PackedStringArray("userData", "message_container", "back", "save", "confirmation_dialog", "chat_name", "name_exists")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 500
+script = ExtResource("1_6sfsi")
+userData = NodePath("VBoxContainer2/TextEdit")
+message_container = NodePath("VBoxContainer/ScrollContainer/MessageContainer")
+back = NodePath("VBoxContainer2/HBoxContainer/Back")
+save = NodePath("VBoxContainer2/HBoxContainer/Save")
+confirmation_dialog = NodePath("ConfirmationDialog")
+chat_name = NodePath("ConfirmationDialog/VBoxContainer/ChatName")
+name_exists = NodePath("ConfirmationDialog/VBoxContainer/NameExists")
+ai_response_style = ExtResource("1_0476t")
+human_response_style = ExtResource("3_n21nc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MessageContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 5
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BACK"
+
+[node name="Save" type="Button" parent="VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SAVE"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "SET_CHATNAME"
+initial_position = 2
+size = Vector2i(300, 115)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConfirmationDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 292.0
+offset_bottom = 66.0
+
+[node name="ChatName" type="LineEdit" parent="ConfirmationDialog/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameExists" type="Label" parent="ConfirmationDialog/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "NAME_ALREADY_EXISTS"
+horizontal_alignment = 1
