@@ -7,6 +7,7 @@ extends BasicControl
 @export var settings_dialog: AcceptDialog
 @export var option_button: OptionButton
 @export var load_chat_dialog: ConfirmationDialog
+@export var about_dialog:AcceptDialog
 
 func _ready():
 	quit.pressed.connect(_on_quit_pressed)
@@ -17,6 +18,7 @@ func _ready():
 		option_button.add_item(file.replace('.tres', ''))
 	continue_chat.pressed.connect(load_chat_dialog.show)
 	load_chat_dialog.confirmed.connect(_on_load_chat_confirm)
+	about.pressed.connect(about_dialog.show)
 
 func _on_load_chat_confirm():
 	if option_button.selected == -1:

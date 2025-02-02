@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/settings_dialog/settings_dialog.gd" id="1_ek2bn"]
 
-[node name="SettingsDialog" type="AcceptDialog" node_paths=PackedStringArray("option_button", "ip", "port", "default_model", "test", "test_result", "load_models", "current_default_model")]
+[node name="SettingsDialog" type="AcceptDialog" node_paths=PackedStringArray("option_button", "ip", "port", "default_model", "test", "test_result", "load_models", "current_default_model", "languages")]
 auto_translate_mode = 1
+title = "SETTINGS"
 initial_position = 1
-size = Vector2i(300, 298)
+size = Vector2i(300, 325)
 visible = true
 script = ExtResource("1_ek2bn")
 option_button = NodePath("VBoxContainer/HBoxContainer/Protocol")
@@ -16,12 +17,25 @@ test = NodePath("VBoxContainer/Test")
 test_result = NodePath("VBoxContainer/TestResult")
 load_models = NodePath("VBoxContainer/LoadModels")
 current_default_model = NodePath("VBoxContainer/CurrentDefaultModel")
+languages = NodePath("VBoxContainer/HBoxContainer4/Languages")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 292.0
-offset_bottom = 249.0
+offset_bottom = 276.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LANGUAGE"
+
+[node name="Languages" type="OptionButton" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

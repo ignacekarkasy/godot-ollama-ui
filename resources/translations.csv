@@ -1,0 +1,19 @@
+key,en,de
+BACK,Back,Zurück
+QUIT,Quit,Beenden
+SETTINGS,Settings,Einstellungen
+ABOUT,About,Über
+NEW_CHAT,New Chat,Neuer Chat
+CONTINUE_CHAT,Continue Chat,Chat Fortsetzen
+PROTOCOL,Protocol,Protokoll
+IP,Ip,Ip
+PORT,Port,Port
+TEST CONNECTION,Test Connection,Verbindung Testen
+OLLAMA VERSION,Ollama Version,Ollama Version
+LOAD MODELS,Load Models,Modelle Laden
+SAVE,Save,Speichern
+SELECT CHAT,Select Chat,Chat Auswählen
+LANGUAGE,Language,Sprache
+TEST FAILED,Test Failed,Test Gescheitert
+JSON FAILED,JSON Failed,JSON Gescheitert
+SET_CHATNAME,Set chat name,Chatnamen setzen

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://vmv6tejymqfp"]
 
 [ext_resource type="Script" path="res://scenes/chat_container/chat_container.gd" id="1_6sfsi"]
-[ext_resource type="StyleBox" uid="uid://dvu8yxw5d2qp5" path="res://ai_response_background.tres" id="1_0476t"]
-[ext_resource type="StyleBox" uid="uid://t3omjbtafy1o" path="res://human_response_background.tres" id="3_n21nc"]
+[ext_resource type="StyleBox" uid="uid://dvu8yxw5d2qp5" path="res://resources/ai_response_background.tres" id="1_0476t"]
+[ext_resource type="StyleBox" uid="uid://t3omjbtafy1o" path="res://resources/human_response_background.tres" id="3_n21nc"]
 
 [node name="ChatContainer" type="VSplitContainer" node_paths=PackedStringArray("userData", "message_container", "back", "save", "confirmation_dialog", "chat_name", "name_exists")]
 anchors_preset = 15

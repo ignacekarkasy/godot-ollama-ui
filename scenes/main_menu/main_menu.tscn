@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_rifrx"]
 [ext_resource type="PackedScene" uid="uid://df66rnwo4w4dv" path="res://scenes/settings_dialog/settings_dialog.tscn" id="2_qhp2b"]
 
-[node name="MainMenu" type="VBoxContainer" node_paths=PackedStringArray("continue_chat", "new_chat", "about", "settings", "quit", "settings_dialog", "option_button", "load_chat_dialog")]
+[node name="MainMenu" type="VBoxContainer" node_paths=PackedStringArray("continue_chat", "new_chat", "about", "settings", "quit", "settings_dialog", "option_button", "load_chat_dialog", "about_dialog")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -24,6 +24,7 @@ quit = NodePath("Quit")
 settings_dialog = NodePath("SettingsDialog")
 option_button = NodePath("LoadChatDialog/VBoxContainer/OptionButton")
 load_chat_dialog = NodePath("LoadChatDialog")
+about_dialog = NodePath("AboutDialog")
 
 [node name="ContinueChat" type="Button" parent="."]
 layout_mode = 2
@@ -61,3 +62,25 @@ offset_bottom = 31.0
 
 [node name="OptionButton" type="OptionButton" parent="LoadChatDialog/VBoxContainer"]
 layout_mode = 2
+
+[node name="AboutDialog" type="AcceptDialog" parent="."]
+auto_translate_mode = 1
+title = "ABOUT"
+initial_position = 1
+size = Vector2i(253, 236)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AboutDialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 245.0
+offset_bottom = 187.0
+
+[node name="RichTextLabel4" type="Label" parent="AboutDialog/VBoxContainer"]
+layout_mode = 2
+text = "This is a demo project.
+- Talk with your local ollama
+- Save/Load chats
+- Select model to use
+- Choose language
+---
+Submit Chats by SHIFT+ENTER."

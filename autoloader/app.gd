@@ -1,7 +1,8 @@
 extends Node
 
-const CONFIG_FILE_PATH = "user://config.tres"
-const CHAT_SAVE_PATH = "user://Chats/"
+const BASE_PATH = "user://" # or "res://"
+const CONFIG_FILE_PATH = BASE_PATH + "config.tres"
+const CHAT_SAVE_PATH = BASE_PATH + "Chats/"
 const CHAT_FILE_SAVE_PATH = CHAT_SAVE_PATH + "%s.tres"
 var config: Config
 
@@ -11,12 +12,35 @@ func _ready():
 		config = Config.new()
 		save_config()
 	load_config()
+	IP.resolve_hostname(create_domain(), IP.TYPE_IPV4)
+	print(config.language, ' -> ', config.language_map.get(config.language))
+	TranslationServer.set_locale(config.language_map.get(config.language))
+
+func create_domain()->String:
+	return get_host_protocol() + get_config_ip() + ':' + get_config_port()
+
+func get_generate_url():
+	return create_domain() + config.api_generate_url
+
+func get_tags_url():
+	return create_domain() + config.api_tags
+
+func get_version_url():
+	return create_domain() + config.api_version
+
+func get_ollama_header():
+	return config.header
 
 func get_config_protocol():
 	return config.host_protocol
 
 func change_default_model(new_model_name: String)->void:
 	config.host_model = new_model_name
+	save_config()
+
+func change_language(new_language: Config.Language)->void:
+	config.language = new_language
+	TranslationServer.set_locale(config.language_map.get(config.language))
 	save_config()
 
 func change_host_ip(new_ip: String)->void:

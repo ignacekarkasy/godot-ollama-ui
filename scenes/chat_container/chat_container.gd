@@ -90,8 +90,8 @@ func _input(event: InputEvent)->void:
 		userData.text = ""
 		
 		get_generate_request.request(
-			OllamaApi.create_domain()+OllamaApi.api_generate_url, 
-			OllamaApi.header, 
+			App.get_generate_url(), 
+			App.get_ollama_header(), 
 			HTTPClient.METHOD_POST,
 			JSON.stringify(chatData.to_dict())
 		)

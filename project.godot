@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 SignalBus="*res://autoloader/signal_bus.gd"
 App="*res://autoloader/app.gd"
-OllamaApi="*res://autoloader/ollama_api.gd"
 
 [display]
 
@@ -27,13 +26,9 @@ window/size/mode=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
-
 [gui]
 
-theme/custom="res://app_theme.tres"
+theme/custom="res://resources/app_theme.tres"
 
 [input]
 
@@ -43,6 +38,11 @@ Send={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://resources/translations.de.translation", "res://resources/translations.en.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

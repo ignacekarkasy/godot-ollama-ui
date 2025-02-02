@@ -10,6 +10,7 @@ var get_models_request: HTTPRequest
 @export var test_result: Label
 @export var load_models: Button
 @export var current_default_model: Label
+@export var languages: OptionButton
 
 func _ready():
 	get_version_request = HTTPRequest.new()
@@ -24,6 +25,10 @@ func _ready():
 	
 	for protocol in Config.Protocol:
 		option_button.add_item(protocol)
+	
+	for language in Config.Language:
+		languages.add_item(language)
+	
 	option_button.selected = App.get_config_protocol()
 	ip.text = App.get_config_ip()
 	port.text = App.get_config_port()
@@ -34,8 +39,12 @@ func _ready():
 	option_button.item_selected.connect(_on_host_protocol)
 	ip.text_changed.connect(_on_ip_changed)
 	port.text_changed.connect(_on_port_changed)
+	languages.item_selected.connect(_on_language_changed)
 	update_default_model_label()
 
+func _on_language_changed(idx:int):
+	App.change_language(idx)
+	
 func _on_ip_changed(new_ip:String):
 	App.change_host_ip(new_ip)
 
@@ -56,17 +65,18 @@ func _on_default_model_selected(idx: int):
 
 func _on_load_models():
 	get_models_request.request(
-		OllamaApi.create_domain()+OllamaApi.api_tags, 
-		OllamaApi.header, 
+		App.get_tags_url(), 
+		App.get_ollama_header(), 
 		HTTPClient.METHOD_GET
 	)
 	
 func test_connection():
 	load_models.disabled = true
 	default_model.disabled = true
+	print(App.get_version_url(), App.get_ollama_header())
 	get_version_request.request(
-		OllamaApi.create_domain()+OllamaApi.api_version, 
-		OllamaApi.header, 
+		App.get_version_url(), 
+		App.get_ollama_header(), 
 		HTTPClient.METHOD_GET
 	)
 

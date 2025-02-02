@@ -23,7 +23,6 @@ func show_new_chat():
 	content.add_child(scene)
 
 func show_old_chat(_old_chat_name:String):
-	print("loading old chat: ", _old_chat_name)
 	var chatData = ResourceLoader.load(App.CHAT_FILE_SAVE_PATH % [_old_chat_name], 'ChatData', ResourceLoader.CACHE_MODE_IGNORE)
 	var scene = chat_container_scene.instantiate() as ChatContainer
 	scene.chatData = chatData
